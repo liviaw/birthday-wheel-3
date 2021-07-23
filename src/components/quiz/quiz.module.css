@@ -1,0 +1,256 @@
+@font-face {
+    font-family: 'Gatwick Bold';
+    src: url('https://font-public.canva.com/YAD-4OodEEs/0/subsets/Gatwick-Ultrabold.1bb251d81eb8dc8e63651f.99844eacd0bda25b8b0f2ae94b70b8b.woff2')
+        format('woff2');
+}
+
+.root {
+    background: rgb(229, 239, 83);
+    color: #ec5637;
+    display: grid;
+    font-family: Gatwick Bold;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 15vh 40vh 40vh;
+    max-width: 100%;
+    height: 100vh;
+    padding: 2rem 2rem 6rem;
+}
+
+.quizItem:nth-of-type(1) {
+    /* grid-column: 1 / 3;
+     grid-row: 2 / 4;
+   */
+    align-items: start;
+    opacity: 1;
+    margin-top: 0;
+}
+
+.quizItem:nth-of-type(1) .halftone {
+}
+
+/* popcorn */
+.quizItem:nth-of-type(2) {
+    /* grid-column: 2 / 4;
+       grid-row: 2 / 4;
+       grid-column: 3 / 5;
+       grid-row: 2 / 4;
+     */
+
+    align-items: end;
+    justify-items: start;
+    margin-top: 0;
+}
+
+/* laptop */
+.quizItem:nth-of-type(3) {
+    /* grid-column: 4 / 6;
+     grid-row: 3 / 5;
+   */
+    margin-top: 0;
+}
+
+/* flowers */
+.quizItem:nth-of-type(4) {
+    /* grid-column: 5 / 7;
+     grid-row: 2 / 4;
+   */
+    opacity: 1;
+    align-items: start;
+    margin-top: 0;
+}
+
+/* book */
+.quizItem:nth-of-type(5) {
+    /* grid-column: 1 / 3;
+     grid-row: 4 / 6;
+     e */
+    margin-top: 0;
+    margin-right: 0;
+    opacity: 1;
+}
+
+/* wrench */
+.quizItem:nth-of-type(6) {
+    justify-items: end;
+    margin-bottom: 0;
+    /* grid-column: 2 / 4;
+     grid-row: 3 / -1; */
+}
+
+.quizItem:nth-of-type(7) {
+    margin-bottom: 0;
+    justify-items: end;
+    /* grid-column: 3 / 5;
+     grid-row: 4 / 6; */
+}
+
+.quizItem:nth-of-type(8) {
+    margin-bottom: 0;
+    align-items: end;
+    justify-items: end;
+    /* grid-column: 5 / 7;
+     grid-row: 4 / 6; */
+}
+
+.quizItem:nth-of-type(9) {
+    margin-bottom: 0;
+    align-items: start;
+}
+
+.quizItem:nth-of-type(10) {
+    margin-bottom: 0;
+    justify-items: start;
+}
+
+.root .item {
+    max-width: calc(100% - 8rem);
+    max-height: calc(100% - 8rem);
+    object-fit: contain;
+}
+
+.root .halftone {
+    max-height: calc(100% - 8rem);
+    max-width: calc(100% - 8rem);
+}
+
+.root h1 {
+    font-size: 2.5rem;
+    grid-column: 1 / -1;
+    text-transform: uppercase;
+    max-width: 50vw;
+    margin: auto;
+}
+
+.quizItem {
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin: -4rem;
+}
+
+.quizItem:hover .halftone {
+    transform: scale(1.25);
+    opacity: 0.75;
+}
+
+.quizItem:hover .item {
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.quizItem:hover .item {
+    animation: move 1s steps(1, end) alternate infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: rotate(-5deg);
+    }
+    25% {
+        transform: rotate(3deg);
+    }
+    50% {
+        transform: rotate(7deg);
+    }
+    75% {
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(9deg);
+    }
+}
+
+.halftone {
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0;
+    transform: scale(0.5);
+    max-width: 100%;
+    transition: 0.2s;
+
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+}
+
+.item {
+    z-index: 1;
+    transform: scale(0.8);
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+}
+
+.selected .item {
+    transform: scale(1);
+}
+
+.selected .halftone {
+    opacity: 1;
+    transform: scale(1.25);
+}
+
+.overlay {
+    text-transform: uppercase;
+    color: #ec5637;
+    font-family: 'Gatwick Bold';
+    position: fixed;
+    font-size: 20vw;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    animation: movetext 1s forwards linear;
+    white-space: nowrap;
+}
+
+@keyframes movetext {
+    0% {
+        transform: translateX(150%);
+    }
+    100% {
+        transform: translateX(-150%);
+    }
+}
+
+.continueButton {
+    background: white;
+    border: 2px solid #ec5637;
+    color: #ec5637;
+    font-family: 'Gatwick Bold';
+    pointer-events: none;
+    position: fixed;
+    bottom: 4rem;
+    right: 4rem;
+    font-size: 2rem;
+    opacity: 0;
+    text-transform: uppercase;
+    padding: 0.5rem 2rem;
+}
+
+.continueButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.unavailable {
+    pointer-events: none;
+}
+
+.unavailable .item {
+    filter: grayscale(0.75);
+    transform: scale(0.75);
+}

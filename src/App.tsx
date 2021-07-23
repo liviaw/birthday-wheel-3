@@ -4,6 +4,7 @@ import { BirthdayWheel } from './Components/BirthdayWheel/BirthdayWheel';
 import { WheelCanvas } from './Components/WheelCanvas/WheelCanvas';
 import { BirthdayMessage } from './Components/BirthdayMessage/BirthdayMessage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Quiz } from './components/quiz';
 import styles from './app.module.css';
 // import WheelComponent from 'react-wheel-of-prizes';
 import type { prizeItem } from './Components/WheelCanvas/WheelCanvas';
@@ -54,7 +55,9 @@ function App() {
   }
   const wheelSpinned = false;
   return (
-    <div>
+
+  <div className={styles.app}>
+    <Quiz />
       <BirthdayMessage name={"Jess"}/>
       <Confetti
         run={wheelSpinned}

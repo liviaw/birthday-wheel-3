@@ -144,7 +144,11 @@ export const WheelCanvas: React.FC<WheelProps> = ({
     ctx.arc(centerX, centerY, size, lastAngle, angle, false)
     ctx.lineTo(centerX, centerY)
     ctx.closePath()
-    ctx.fillStyle = segColors[key % 2]
+    if (segments[key].picked) {
+        ctx.fillStyle = segColors[2]
+    } else {
+        ctx.fillStyle = segColors[key % 2]
+    }
     ctx.fill()
     ctx.stroke()
     ctx.save()
@@ -241,3 +245,6 @@ export const WheelCanvas: React.FC<WheelProps> = ({
   )
 }
 export default WheelCanvas;
+// courtesy of https://codepen.io/deab/pen/gObXawr
+// https://www.npmjs.com/package/react-wheel-of-prizes
+// and https://github.com/weibenfalk/vanilla-js-wheel-of-fortune
