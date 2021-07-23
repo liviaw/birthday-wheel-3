@@ -24,7 +24,7 @@ export const BirthdayMessage: React.FC<Props> = ({name, continueShowWheel}) => {
             setIndex(index => index + 1)
             setShowButton(true);
         },
-          3000 // after 3 seconds
+          1500 // after 1.5 seconds
         );
         return () => clearTimeout(intervalId);
       }, []);

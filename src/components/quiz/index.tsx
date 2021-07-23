@@ -43,11 +43,11 @@ const QuizItem = ({
 };
 
 const items = [
-  { img: '../../../public/armchair.webp', points: 1 },
-  { img: '../../../public/donut.webp', points: 3 },
-  { img: '../../public/grapes.webp', points: 5 },
-  { img: '../../flowers.webp', points: 4 },
-  { img: '../../light-bulb.webp', points: 1 },
+  { img: 'armchair.webp', points: 1 },
+  { img: 'donut.webp', points: 3 },
+  { img: 'grapes.webp', points: 5 },
+  { img: 'flowers.webp', points: 4 },
+  { img: 'light-bulb.webp', points: 1 },
   { img: 'sushi.webp', points: 4 },
   { img: 'mango.webp', points: 3 },
   { img: 'popcorn.webp', points: 2 },

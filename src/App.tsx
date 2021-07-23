@@ -44,10 +44,10 @@ function App() {
     '#4F445D'
   ]
   const [showWheel, setShowWheel] = useState(false);
-  const [showBirthdayMessage, setShowBirthdayMessage] = useState(false);
+  const [showChoices, setShowChoices] = useState(false);
   const [wheelSpinned, setWheelSpinned] = useState(false);
-  const continueShowMessage = () => {
-    setShowBirthdayMessage(true);
+  const continueShowChoices = () => {
+    setShowChoices(true);
   }
   const onFinished = (winner: string, index: number) => {
     removePrize(index);
@@ -65,10 +65,10 @@ function App() {
   return (
 
     <div className={styles.app}>
-      { !showBirthdayMessage && !showWheel && <Quiz continueShowMessage={continueShowMessage} />}
       {/* {/* {showBirthdayMessage &&  */}
-        {!showWheel && <BirthdayMessage name={"Jess"} continueShowWheel={continueShowWheel} />
+        {!showChoices && !showWheel && <BirthdayMessage name={"Jess"} continueShowWheel={continueShowChoices} />
       }
+      { showChoices && !showWheel && <Quiz continueShowMessage={continueShowWheel} />}
       <Confetti
         run={wheelSpinned}
         tweenDuration={100}
