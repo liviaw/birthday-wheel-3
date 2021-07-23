@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Gatwick Bold';
+    src: url('https://font-public.canva.com/YAD-4OodEEs/0/subsets/Gatwick-Ultrabold.1bb251d81eb8dc8e63651f.99844eacd0bda25b8b0f2ae94b70b8b.woff2')
+        format('woff2');
+}
+
+.rootFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 5em;
+}
+
+.root {
+    background: #D46BE4;
+    color: rgb(229, 239, 83);
+    font-family: 'Gatwick Bold';
+    width: 100vw;
+    height: 100vh;
+
+
+    /* padding: 2rem 2rem 6rem; */
+}
+.gifContainter {
+    padding: 0 5em;
+}
+
+.birthdayMessage {
+    font-size: 5vw;
+}
+
