@@ -40,6 +40,7 @@ export const WheelCanvas: React.FC<WheelProps> = ({
   let isStarted = false
   const [isFinished, setFinished] = useState(false);
   const [pick, setPicked] = useState([]);
+  const[prize, setPrize] = useState<string>("");
   let timerHandle: any = 0;
   const timerDelay: number = segments.length
   let angleCurrent = 0
@@ -130,6 +131,7 @@ export const WheelCanvas: React.FC<WheelProps> = ({
       clearInterval(timerHandle)
       timerHandle = 0
       angleDelta = 0
+      setPrize(currentSegment)
     }
   }
 
@@ -280,6 +282,10 @@ export const WheelCanvas: React.FC<WheelProps> = ({
   }
   return (
     <div id='wheel' className={styles.root}>
+        {
+            prize === "" ? <h1>Spin the wheel!</h1> :
+            <h1>You won a very special {prize}</h1>
+        }
       <canvas
         ref={colorPickerRef}
         id='canvas'
