@@ -43,11 +43,11 @@ const QuizItem = ({
 };
 
 const items = [
-  { img: 'armchair.webp', points: 1 },
-  { img: 'donut.webp', points: 3 },
-  { img: 'grapes.webp', points: 5 },
-  { img: 'flowers.webp', points: 4 },
-  { img: 'light-bulb.webp', points: 1 },
+  { img: '../../../public/armchair.webp', points: 1 },
+  { img: '../../../public/donut.webp', points: 3 },
+  { img: '../../public/grapes.webp', points: 5 },
+  { img: '../../flowers.webp', points: 4 },
+  { img: '../../light-bulb.webp', points: 1 },
   { img: 'sushi.webp', points: 4 },
   { img: 'mango.webp', points: 3 },
   { img: 'popcorn.webp', points: 2 },
@@ -60,8 +60,11 @@ const items = [
 // 6 - 7 points => Messina
 // 8 points => Provider
 // 9 - 14 points => Wine
+type props = {
+  continueShowMessage: () => void,
+}
 
-export const Quiz = () => {
+export const Quiz: React.FC<props>  = ({continueShowMessage}) => {
   const [points, setPoints] = useState(0);
   const [counter, setCounter] = useState(0);
   const prize = useMemo(() => {
@@ -112,7 +115,7 @@ export const Quiz = () => {
           unavailable={counter === 2}
         />
       ))}
-      <button className={classnames(styles.continueButton, { [styles.visible]: counter === 2 })}>
+      <button onClick={continueShowMessage} className={classnames(styles.continueButton, { [styles.visible]: counter === 2 })}>
         Continue
       </button>
     </div>

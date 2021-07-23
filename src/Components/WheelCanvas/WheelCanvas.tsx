@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import styles from "./WheelCanvas.module.css";
 
 export type WheelProps = {
     segments: prizeItem[],
@@ -39,18 +40,19 @@ export const WheelCanvas: React.FC<WheelProps> = ({
   let isStarted = false
   const [isFinished, setFinished] = useState(false);
   const [pick, setPicked] = useState([]);
-  let timerHandle = 0
+  let timerHandle: any = 0;
   const timerDelay: number = segments.length
   let angleCurrent = 0
   let angleDelta = 0
-  let canvasContext = null
-  let maxSpeed = Math.PI / `${segments.length}`
+  let canvasContext: any = null
+  let maxSpeed = Math.PI / segments.length
   const upTime: number = segments.length * upDuration
   const downTime = segments.length * downDuration
   let spinStart = 0
   let frames = 0
   const centerX = 300
   const centerY = 300
+  let colorPickerRef = React.createRef<HTMLCanvasElement>();
   useEffect(() => {
     wheelInit()
     setTimeout(() => {
@@ -69,10 +71,13 @@ export const WheelCanvas: React.FC<WheelProps> = ({
       canvas.setAttribute('width', '1000')
       canvas.setAttribute('height', '600')
       canvas.setAttribute('id', 'canvas')
-      document.getElementById('wheel').appendChild(canvas)
+      document.getElementById('wheel')?.appendChild(canvas)
     }
-    canvas.addEventListener('click', spin, false)
-    canvasContext = canvas.getContext('2d')
+    canvas?.addEventListener('click', spin, false)
+    // canvasContext = canvas.getContext('2d')
+    if (colorPickerRef.current) {
+        canvasContext = colorPickerRef.current.getContext('2d');
+    }
   }
   const spin = () => {
     isStarted = true
@@ -81,7 +86,7 @@ export const WheelCanvas: React.FC<WheelProps> = ({
       // maxSpeed = Math.PI / ((segments.length*2) + Math.random())
       maxSpeed = Math.PI / segments.length
       frames = 0
-      timerHandle = setInterval(onTimerTick, timerDelay)
+      timerHandle = setInterval(onTimerTick, timerDelay);
     }
   }
   const onTimerTick = () => {
@@ -115,6 +120,11 @@ export const WheelCanvas: React.FC<WheelProps> = ({
     angleCurrent += angleDelta
     while (angleCurrent >= Math.PI * 2) angleCurrent -= Math.PI * 2
     if (finished) {
+        // const ctx = canvasContext;
+        // ctx.fillStyle = segColors[2]
+        // let lastAngle = angleCurrent
+        // darkenSegment(currentSegmentIndex, lastAngle);
+        draw();
       setFinished(true)
       onFinished(currentSegment, currentSegmentIndex)
       clearInterval(timerHandle)
@@ -122,6 +132,31 @@ export const WheelCanvas: React.FC<WheelProps> = ({
       angleDelta = 0
     }
   }
+
+  const darkenSegment = (key: number, lastAngle: number) => {
+    const ctx = canvasContext
+    const value = segments[key].value
+    ctx.save()
+    ctx.beginPath()
+    ctx.moveTo(centerX, centerY)
+    ctx.lineTo(centerX, centerY)
+    ctx.closePath()
+    if (segments[key].picked) {
+        ctx.fillStyle = segColors[2]
+    } else {
+        ctx.fillStyle = segColors[key % 2]
+    }
+    ctx.fill()
+    ctx.stroke()
+    ctx.save()
+    ctx.translate(centerX, centerY)
+    ctx.fillStyle = contrastColor || 'white'
+    ctx.font = 'bold 1em ' + fontFamily
+    ctx.fillText(value.substr(0, 21), size / 2 + 20, 0)
+    // ctx.fillText("hi", 2, 0);
+    ctx.restore()
+  }
+
 
   const wheelDraw = () => {
     clear()
@@ -200,7 +235,19 @@ export const WheelCanvas: React.FC<WheelProps> = ({
     ctx.strokeStyle = primaryColor || 'black'
     ctx.stroke()
   }
-
+/*
+    let lastAngle = angleCurrent
+    const len = segments.length
+    const PI2 = Math.PI * 2
+    ctx.lineWidth = 1
+    ctx.strokeStyle = primaryColor || 'black'
+    ctx.textBaseline = 'middle'
+    ctx.textAlign = 'center'
+    ctx.font = '1em ' + fontFamily
+    for (let i = 1; i <= len; i++) {
+      const angle = PI2 * (i / len) + angleCurrent
+      drawSegment(i - 1, lastAngle, angle)
+*/
   const drawNeedle = () => {
     const ctx = canvasContext
     ctx.lineWidth = 1
@@ -232,8 +279,9 @@ export const WheelCanvas: React.FC<WheelProps> = ({
     ctx.clearRect(0, 0, 1000, 800)
   }
   return (
-    <div id='wheel'>
+    <div id='wheel' className={styles.root}>
       <canvas
+        ref={colorPickerRef}
         id='canvas'
         width='1000'
         height='800'

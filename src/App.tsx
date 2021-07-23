@@ -1,10 +1,9 @@
-import React, { Component, useState }  from 'react';
-import { Wheel } from './Components/Wheel/Wheel';
+import React, { Component, useState } from 'react';
 import { BirthdayWheel } from './Components/BirthdayWheel/BirthdayWheel';
 import { WheelCanvas } from './Components/WheelCanvas/WheelCanvas';
 import { BirthdayMessage } from './Components/BirthdayMessage/BirthdayMessage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Quiz } from './components/quiz';
+import { Quiz } from './Components/Quiz';
 import styles from './app.module.css';
 // import WheelComponent from 'react-wheel-of-prizes';
 import type { prizeItem } from './Components/WheelCanvas/WheelCanvas';
@@ -13,7 +12,7 @@ import Confetti from 'react-confetti';
 import 'react-wheel-of-prizes/dist/index.css';
 
 function App() {
-  const segments : prizeItem[] = [
+  const segments: prizeItem[] = [
     {
       value: 'oh ouh nothing',
       picked: false
@@ -44,45 +43,55 @@ function App() {
     '#E2CFFA',
     '#4F445D'
   ]
-  const [showWheel, setShowWheel] = useState(true);
+  const [showWheel, setShowWheel] = useState(false);
+  const [showBirthdayMessage, setShowBirthdayMessage] = useState(false);
+  const [wheelSpinned, setWheelSpinned] = useState(false);
+  const continueShowMessage = () => {
+    setShowBirthdayMessage(true);
+  }
   const onFinished = (winner: string, index: number) => {
     removePrize(index);
+    setWheelSpinned(true);
     console.log(winner)
   }
 
   const removePrize = (index: number) => {
     segments[index].picked = true;
   }
-  const wheelSpinned = false;
+
+  const continueShowWheel = () => {
+    setShowWheel(true);
+  }
   return (
 
-  <div className={styles.app}>
-    <Quiz />
-      <BirthdayMessage name={"Jess"}/>
+    <div className={styles.app}>
+      { !showBirthdayMessage && !showWheel && <Quiz continueShowMessage={continueShowMessage} />}
+      {/* {/* {showBirthdayMessage &&  */}
+        {!showWheel && <BirthdayMessage name={"Jess"} continueShowWheel={continueShowWheel} />
+      }
       <Confetti
         run={wheelSpinned}
+        tweenDuration={100}
+        onConfettiComplete={() => {
+          setWheelSpinned(false);
+        }}
       />
-      <WheelCanvas
-      segments={segments}
-      segColors={segColors}
-      winningSegment='won 10'
-      onFinished={(winner: string, index: number) => onFinished(winner, index)}
-      primaryColor='black'
-      contrastColor='white'
-      buttonText='Spin'
-      isOnlyOnce={false}
-      size={290}
-      upDuration={100}
-      downDuration={1000}
-      fontFamily='Gatwick Bold'
-    /> 
+      {showWheel && <WheelCanvas
+        segments={segments}
+        segColors={segColors}
+        winningSegment='won 10'
+        onFinished={(winner: string, index: number) => onFinished(winner, index)}
+        primaryColor='black'
+        contrastColor='white'
+        buttonText='Spin'
+        isOnlyOnce={false}
+        size={290}
+        upDuration={100}
+        downDuration={1000}
+        fontFamily='Gatwick Bold'
+      />}
     </div>
   )
-  // return (
-  //   <div className={styles.app}>
-  //     <BirthdayWheel/>
-  //   </div>
-  // );
 }
 
 export default App;

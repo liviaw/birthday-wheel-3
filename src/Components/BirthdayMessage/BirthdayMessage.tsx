@@ -7,10 +7,11 @@ import { Button } from 'react-bootstrap';
 
 type Props = {
     name: string;
+    continueShowWheel: () => void;
 }
 
 // const name="Name";
-export const BirthdayMessage: React.FC<Props> = ({name}) => {
+export const BirthdayMessage: React.FC<Props> = ({name, continueShowWheel}) => {
     const [index, setIndex] = React.useState(0);
     const message = "Happy birthday Name!";
     const [showButton, setShowButton] = useState(false); 
@@ -43,7 +44,7 @@ export const BirthdayMessage: React.FC<Props> = ({name}) => {
         </div>
             {showButton &&
                 <div>
-                    <Button>
+                    <Button onClick={continueShowWheel}>
                     yes
                 </Button>
                 <Button>
