@@ -1,4 +1,4 @@
-.app {
+.App {
   text-align: center;
 }
 
@@ -35,4 +35,51 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+a:link, a:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #101C38;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+body {
+  flex-direction: row;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.015em;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #101C38;
+}
+
+code {
+font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
 }

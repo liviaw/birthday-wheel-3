@@ -1,0 +1,15 @@
+
+.root {
+    background: #D46BE4;
+    color: rgb(229, 239, 83);
+    font-family: 'Gatwick Bold';
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 5em;
+
+    /* padding: 2rem 2rem 6rem; */
+}
