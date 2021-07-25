@@ -10,6 +10,11 @@
     justify-content: space-evenly;
     align-items: center;
     padding-top: 5em;
+    position: absolute;
+    top: 0;
+}
 
-    /* padding: 2rem 2rem 6rem; */
+.confirm {
+    position: absolute;
+    bottom: 15vh;
 }

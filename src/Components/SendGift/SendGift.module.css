@@ -1,0 +1,15 @@
+.root {
+    background: #D46BE4;
+    color: rgb(229, 239, 83);
+    font-family: 'Gatwick Bold';
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
+}

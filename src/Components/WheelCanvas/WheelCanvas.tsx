@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./WheelCanvas.module.css";
+import { Button } from 'react-bootstrap';
 
 export type WheelProps = {
     segments: prizeItem[],
     segColors: string[],
     winningSegment: string,
     onFinished: (msg: string, index: number) => void,
+    onConfirmed: () => void,
     primaryColor: string,
     contrastColor: string,
     buttonText: string,
@@ -26,6 +28,7 @@ export const WheelCanvas: React.FC<WheelProps> = ({
     segColors,
     winningSegment,
     onFinished,
+    onConfirmed,
     primaryColor,
     contrastColor,
     buttonText,
@@ -284,7 +287,7 @@ export const WheelCanvas: React.FC<WheelProps> = ({
     <div id='wheel' className={styles.root}>
         {
             prize === "" ? <h1>Spin the wheel!</h1> :
-            <h1>You won a very special {prize}</h1>
+            <h1>You won a very special: {prize}</h1>
         }
       <canvas
         ref={colorPickerRef}
@@ -295,10 +298,16 @@ export const WheelCanvas: React.FC<WheelProps> = ({
           pointerEvents: isFinished && isOnlyOnce ? 'none' : 'auto'
         }}
       />
+      {isFinished && 
+      <Button
+        className={styles.confirm}
+        onClick={onConfirmed}
+        >Confirmed
+      </Button>}
     </div>
   )
 }
-export default WheelCanvas;
+
 // courtesy of https://codepen.io/deab/pen/gObXawr
 // https://www.npmjs.com/package/react-wheel-of-prizes
 // and https://github.com/weibenfalk/vanilla-js-wheel-of-fortune
