@@ -1,17 +1,13 @@
 import React, { Component, useState } from 'react';
-import { BirthdayWheel } from './Components/BirthdayWheel/BirthdayWheel';
 import { WheelCanvas } from './Components/WheelCanvas/WheelCanvas';
 import { BirthdayMessage } from './Components/BirthdayMessage/BirthdayMessage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Quiz } from './Components/Quiz';
 import styles from './app.module.css';
 import type { prizeItem } from './Components/WheelCanvas/WheelCanvas';
-import useWindowSize from 'react-use-window-size';
 import Confetti from 'react-confetti';
-import 'react-wheel-of-prizes/dist/index.css';
 import { LogIn } from './Components/LogIn/LogIn';
 import { SendGift } from './Components/SendGift/SendGift';
-// import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
   const segments: prizeItem[] = [
