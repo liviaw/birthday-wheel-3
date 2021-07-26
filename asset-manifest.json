@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/birthday-wheel-3/static/css/main.2734d820.chunk.css",
+    "main.js": "/birthday-wheel-3/static/js/main.8e479f64.chunk.js",
+    "main.js.map": "/birthday-wheel-3/static/js/main.8e479f64.chunk.js.map",
+    "runtime-main.js": "/birthday-wheel-3/static/js/runtime-main.2600771f.js",
+    "runtime-main.js.map": "/birthday-wheel-3/static/js/runtime-main.2600771f.js.map",
+    "static/css/2.4be38407.chunk.css": "/birthday-wheel-3/static/css/2.4be38407.chunk.css",
+    "static/js/2.e4456c03.chunk.js": "/birthday-wheel-3/static/js/2.e4456c03.chunk.js",
+    "static/js/2.e4456c03.chunk.js.map": "/birthday-wheel-3/static/js/2.e4456c03.chunk.js.map",
+    "static/js/3.8d68cc46.chunk.js": "/birthday-wheel-3/static/js/3.8d68cc46.chunk.js",
+    "static/js/3.8d68cc46.chunk.js.map": "/birthday-wheel-3/static/js/3.8d68cc46.chunk.js.map",
+    "index.html": "/birthday-wheel-3/index.html",
+    "static/css/2.4be38407.chunk.css.map": "/birthday-wheel-3/static/css/2.4be38407.chunk.css.map",
+    "static/css/main.2734d820.chunk.css.map": "/birthday-wheel-3/static/css/main.2734d820.chunk.css.map",
+    "static/js/2.e4456c03.chunk.js.LICENSE.txt": "/birthday-wheel-3/static/js/2.e4456c03.chunk.js.LICENSE.txt",
+    "static/media/birthdayBalloon.e7e58333.gif": "/birthday-wheel-3/static/media/birthdayBalloon.e7e58333.gif",
+    "static/media/birthdayCake.5004c9cb.gif": "/birthday-wheel-3/static/media/birthdayCake.5004c9cb.gif",
+    "static/media/mail.7c5f271f.gif": "/birthday-wheel-3/static/media/mail.7c5f271f.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2600771f.js",
+    "static/css/2.4be38407.chunk.css",
+    "static/js/2.e4456c03.chunk.js",
+    "static/css/main.2734d820.chunk.css",
+    "static/js/main.8e479f64.chunk.js"
+  ]
+}
